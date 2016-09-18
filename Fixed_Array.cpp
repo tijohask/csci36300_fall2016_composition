@@ -32,6 +32,7 @@ Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, M> & arr)
 template <typename T, size_t N>
 Fixed_Array <T, N>::Fixed_Array (T fill)
 {
+
 }
 
 //

@@ -5,7 +5,7 @@ template <typename T>
 inline
 size_t Stack <T>::size (void) const
 {
-
+	return cur_size_;
 }
 
 //
@@ -15,7 +15,7 @@ template <typename T>
 inline
 T Stack <T>::top (void) const
 {
-
+	return top_;
 }
 
 //
@@ -25,5 +25,5 @@ template <typename T>
 inline
 bool Stack <T>::is_empty (void) const
 {
-
+	return is_empty_;
 }

@@ -54,7 +54,7 @@ public:
   const Stack & operator = (const Stack & rhs);
 
   /**
-   * Push a new \a element onto the stack. The element is inserted
+   * Push a new element onto the stack. The element is inserted
    * before all the other elements in the list.
    *
    * @param[in]      element       Element to add to the list
