@@ -1,0 +1,28 @@
+project (Composition) {
+	exename = Composition
+
+	Source_Files {
+		driver.cpp
+	}
+
+	Template_Files {
+		Array.cpp
+		Fixed_Array.cpp
+		Queue.cpp
+		Stack.cpp
+	}
+
+	Header_Files {
+		Array.h
+		Fixed_Array.h
+		Queue.h
+		Stack.h
+	}
+
+	Inline_Files {
+		Array.h
+		Fixed_Array.inl
+		Queue.inl
+		Stack.inl
+	}
+}
