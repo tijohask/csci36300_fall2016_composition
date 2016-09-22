@@ -26,3 +26,7 @@
 *.exe
 *.out
 *.app
+Composition
+
+# Makefile
+Makefile.Composition
