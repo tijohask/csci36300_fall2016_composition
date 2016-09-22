@@ -1,3 +1,5 @@
 #!/bin/bash
-make -f Makefile.Array
-
+rm -f Makefile.Composition driver.o Composition
+mpc.pl -type make Composition.mpc
+make -f Makefile.Composition
+./Composition
