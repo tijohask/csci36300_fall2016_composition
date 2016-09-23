@@ -1,5 +1,15 @@
 #!/bin/bash
-rm -f Makefile.Composition driver.o Composition
-mpc.pl -type make Composition.mpc
-make -f Makefile.Composition
-./Composition
+#mpc.pl -type make Composition.mpc
+#mwc.pl -type make
+if [ -a Composition ]
+  then rm Composition
+fi
+
+if [ -a driver.o ]
+  then rm driver.o
+fi
+
+make
+valgrind --tool=memcheck --leak-check=full --log-file=Valgrind.txt ./Composition
+sleep 2
+cat Valgrind.txt
