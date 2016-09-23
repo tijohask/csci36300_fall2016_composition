@@ -40,7 +40,7 @@ Array <T>::Array (size_t length, T fill): data_(NULL), cur_size_(length), max_si
 // Array (const Array &)
 //
 template <typename T>
-Array <T>::Array (const Array & array): data_(NULL), cur_size_(array.size), max_size_(array.max_size())
+Array <T>::Array (const Array & array): data_(NULL), cur_size_(array.size()), max_size_(array.max_size())
 {
 	if(array.max_size() > 0)
 	{
@@ -70,6 +70,13 @@ Array <T>::~Array (void)
 template <typename T>
 const Array <T> & Array <T>::operator = (const Array & rhs)
 {
+	//(this != &rhs) compares the addresses. 
+	//If the object is being assigned to itself, its caught and nothing happens
+	
+	//(*this != rhs) compares the actual objects.
+	//It'll save time if many identical arrays are being compared to 
+	//each other, but it'll waste time if the majority of arrays are not
+	//similar
 	if(this != &rhs)
 	{
 		delete [] data_;
@@ -153,9 +160,6 @@ void Array <T>::resize (size_t new_size)
 		T * hold = data_;//store the old data
 		data_ = new T[new_size];//make a new array
 		max_size_ = new_size;//reassign the maximum size to the new value
-		this->fill(' ');
-		//fill the array with blanks. the compiler doesn't like
-		//assigning uninitialized values
 		for(size_t i = 0; i < cur_size_; i++)
 		{//iterate through and copy the old array
 			data_[i] = hold[i];
@@ -175,9 +179,6 @@ void Array <T>::resize (size_t new_size)
 		T * hold = data_;//store the old data
 		data_ = new T[new_size];//make a new array
 		max_size_ = new_size;//reassign the maximum size to the new value
-		this->fill(' ');
-		//fill the array with blanks. the compiler doesn't like
-		//assigning uninitialized values
 		for(size_t i = 0; i < cur_size_; i++)
 		{//iterate through and copy the old array
 			data_[i] = hold[i];
@@ -228,14 +229,6 @@ int Array <T>::find (T val, size_t start) const
 template <typename T>
 bool Array <T>::operator == (const Array & rhs) const
 {
-	//(this != &rhs) compares the addresses. 
-	//If the object is being assigned to itself, its caught and nothing happens
-	
-	//(*this != rhs) compares the actual objects.
-	//It'll save time if many identical arrays are being compared to 
-	//each other, but it'll waste time if the majority of arrays are not
-	//similar
-	
 	if(this == &rhs)
 	{
 		return true;
