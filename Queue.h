@@ -35,7 +35,7 @@ public:
   Queue (void);
 
   /// Copy constructor.
-  Queue (const Stack & s);
+  Queue (const Queue & q);
 
   /// Destructor.
   ~Queue (void);
@@ -46,7 +46,9 @@ public:
    * @param[in]      rhs           Right-hand side of operator
    * @return         Reference to self
    */
-  const Queue & operator = (const Stack & rhs);
+  const Queue & operator = (const Queue & rhs);
+
+  T get(size_t index) const;
 
   /**
    * Add a new element to the end of the list
@@ -61,9 +63,6 @@ public:
    *@exception		empty_exception		The queue is empty.
    */
   T dequeue (void);
-  
-  /// Remove all elements from the queue.
-  void Queue <T>::clear (void)
 
   /**
    * Test if the queue is empty
@@ -79,11 +78,20 @@ public:
    * @return         Size of the queue.
    */
   size_t size (void) const;
+  
+  size_t max_size (void) const;
 
   /// Remove all elements from the queue.
   void clear (void);
 
 private:
+  Array <T> array;
+
+  size_t cur_size_;
+  
+  size_t max_size_;
+  
+  bool is_empty_;
   // add memer variable here
 };
 
