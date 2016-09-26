@@ -53,6 +53,8 @@ public:
    */
   const Stack & operator = (const Stack & rhs);
 
+	
+  T get(size_t index) const;
   /**
    * Push a new element onto the stack. The element is inserted
    * before all the other elements in the list.
@@ -91,11 +93,22 @@ public:
    * @return         Size of the stack.
    */
   size_t size (void) const;
+  
+  size_t max_size (void) const;
 
   /// Remove all elements from the stack.
   void clear (void);
 
 private:
+  Array <T> array;
+  
+  T top_;
+
+  size_t cur_size_;
+  
+  size_t max_size_;
+  
+  bool is_empty_;
   // add member variable here
 };
 
