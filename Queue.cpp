@@ -30,7 +30,7 @@ Queue <T>::Queue (const Queue & queue):
 array(NULL), cur_size_(queue.size()), max_size_(queue.max_size()), is_empty_(queue.is_empty())
 {
 	array = Array <T> (queue.max_size());
-	cur_size_ = queue.cur_size();
+	cur_size_ = queue.size();
 	max_size_ = queue.max_size();
 	for(int i = 0; i < cur_size_; i++)
 	{
@@ -56,7 +56,7 @@ const Queue <T> & Queue <T>::operator = (const Queue & rhs)
 	if(this != &rhs)
 	{
 		array = Array <T> (rhs.max_size());
-		cur_size_ = rhs.cur_size();
+		cur_size_ = rhs.size();
 		max_size_ = rhs.max_size();
 		for(int i = 0; i < cur_size_; i++)
 		{
