@@ -1,6 +1,6 @@
 #!/bin/bash
-#mpc.pl -type make Composition.mpc
-#mwc.pl -type make
+mpc.pl -type make Composition.mpc
+mwc.pl -type make
 if [ -a Composition ]
   then rm Composition
 fi
