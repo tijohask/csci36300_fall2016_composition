@@ -53,8 +53,9 @@ public:
    */
   const Stack & operator = (const Stack & rhs);
 
-	
+  //Get element from index of the stack. Used for copying
   T get(size_t index) const;
+  
   /**
    * Push a new element onto the stack. The element is inserted
    * before all the other elements in the list.

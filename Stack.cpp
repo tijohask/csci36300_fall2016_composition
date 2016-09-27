@@ -128,6 +128,8 @@ const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 template <typename T>
 void Stack <T>::clear (void)
 {
+	Array<T> array (50);
+	max_size_ = 50;
 	top_ = 0;
 	cur_size_ = 0;
 	is_empty_ = true;
