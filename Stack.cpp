@@ -87,14 +87,14 @@ template <typename T>
 void Stack <T>::pop (void)
 {
 	//T hold = top_;
-	cur_size_ = cur_size_ - 1;
+	cur_size_ = cur_size_ - 1;//decrement current size
 	if(cur_size_ == 0)
-	{
+	{//check if removing the element emptied the array
 		is_empty_ = true;
 		top_ = 0;
 	}
 	else
-	{
+	{//assign a new topmost element
 		top_ = array[cur_size_ - 1];
 	}
 	//return hold;
@@ -107,16 +107,22 @@ void Stack <T>::pop (void)
 template <typename T>
 const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 {
+	//copy over the is_empty_ boolean
 	is_empty_ = rhs.is_empty();
-	if(is_empty_)
-	{
+	
+	if(!is_empty_)
+	{//if the array isn't empty, copy over the top value
 		top_ = rhs.top();
 	}
+	
+	//assign a new array
 	array = Array <T> (rhs.max_size());
-	cur_size_ = rhs.size();
+	
+	cur_size_ = rhs.size();//set the sizes to their new values
 	max_size_ = rhs.max_size();
+	
 	for(int i = 0; i < cur_size_; i++)
-	{
+	{//copy over the stack elements
 		array[i] = rhs.get(i);
 	}
 	
@@ -128,6 +134,8 @@ const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 template <typename T>
 void Stack <T>::clear (void)
 {
+	//basically a new constructor
+	//assign everything to their default values
 	Array<T> array (50);
 	max_size_ = 50;
 	top_ = 0;
