@@ -1,16 +1,27 @@
 #!/bin/bash
+printf "Creating local Makefile\n"
 mpc.pl -type make Composition.mpc
+printf "Creating global Makefile\n"
 mwc.pl -type make
 
-if [ -a Composition ]
-  then rm Composition
-fi
+#if [ -a Composition ]
+#  then
+#    rm Composition
+#    echo "Composition removed."
+#fi
 
-if [ -a driver.o ]
-  then rm driver.o
-fi
+#if [ -a driver.o ]
+#  then
+#    rm driver.o
+#    echo "driver.o removed."
+#fi
 
+printf "\nCleaning Workspace\n"
+make clean
+printf "\nCompiling code\n"
 make
+printf "\nRunning...\n"
 valgrind --tool=memcheck --leak-check=full --log-file=Valgrind.txt ./Composition
+printf "Done.\n\n"
 sleep 2
 cat Valgrind.txt
