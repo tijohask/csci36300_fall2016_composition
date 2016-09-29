@@ -24,7 +24,7 @@ template <size_t M>
 Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, M> & arr)
 {
 	//NO
-	throw 	
+	//throw 	
 }
 
 //

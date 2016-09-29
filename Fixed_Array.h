@@ -57,8 +57,7 @@ public:
    * @param[in]      rhs        Right-hand side of operator.
    */
   template <size_t M>
-  const Fixed_Array & operator = (const Fixed_Array <T, M> & rhs);
-  
+  const Fixed_Array & operator = (const Fixed_Array <T, M> & rhs); 
 //  void resize (size_t new_size);
 };
 
