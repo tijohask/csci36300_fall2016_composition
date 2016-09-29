@@ -25,4 +25,10 @@ project (Composition) {
 		Queue.inl
 		Stack.inl
 	}
+	
+	specific(make){
+		compile_flags += -std=c++11
+	}
+
 }
+
