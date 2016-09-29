@@ -2,7 +2,7 @@
 // Fixed_Array
 //
 template <typename T, size_t N>
-Fixed_Array <T, N>::Fixed_Array (void): Array<T>(N)
+Fixed_Array <T, N>::Fixed_Array (void): Base_Array<T>(N)
 {
 	//use the length constructor
 }
@@ -11,7 +11,7 @@ Fixed_Array <T, N>::Fixed_Array (void): Array<T>(N)
 // Fixed_Array
 //
 template <typename T, size_t N>
-Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, N> & arr): Array<T>(arr)
+Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, N> & arr): Base_Array<T>(arr)
 {
 	//use the array copy constructor
 }
@@ -23,14 +23,15 @@ template <typename T, size_t N>
 template <size_t M>
 Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, M> & arr)
 {
-	//NO	
+	//NO
+	throw 	
 }
 
 //
 // Fixed_Array
 //
 template <typename T, size_t N>
-Fixed_Array <T, N>::Fixed_Array (T fill): Array<T>(N, fill)
+Fixed_Array <T, N>::Fixed_Array (T fill): Base_Array<T>(N, fill)
 {
 	//use the fill constructor
 }
@@ -75,8 +76,10 @@ const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T,
  * Overriding the base method to prevent problems. Now resize
  * will do nothing.
  */
+/*
+Fixed array now inherits from Base Array. Resize is not needed.
 template <typename T, size_t N>
 void Fixed_Array <T, N> :: resize(size_t new_size)
 {
 	//NO
-}
+}*/

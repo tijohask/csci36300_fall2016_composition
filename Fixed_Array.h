@@ -1,7 +1,7 @@
 #ifndef _FIXED_ARRAY_H_
 #define _FIXED_ARRAY_H_
 
-#include "Array.h"
+#include "Base_Array.h"
 
 /**
  * @class Fixed_Array
@@ -11,7 +11,7 @@
  * the Array class's methods.
  */
 template <typename T, size_t N>
-class Fixed_Array : public Array <T>
+class Fixed_Array : public Base_Array <T>
 {
 public:
   /// Default constructor.
@@ -59,7 +59,7 @@ public:
   template <size_t M>
   const Fixed_Array & operator = (const Fixed_Array <T, M> & rhs);
   
-  void resize (size_t new_size);
+//  void resize (size_t new_size);
 };
 
 // include the inline files
