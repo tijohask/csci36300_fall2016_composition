@@ -1,11 +1,16 @@
 project (Composition) {
 	exename = Composition
 
+	specific(make){
+		compile_flags += -std=c++11
+	}
+
 	Source_Files {
 		driver.cpp
 	}
 
 	Template_Files {
+		Base_Array.cpp
 		Array.cpp
 		Fixed_Array.cpp
 		Queue.cpp
@@ -13,6 +18,7 @@ project (Composition) {
 	}
 
 	Header_Files {
+		Base_Array.h
 		Array.h
 		Fixed_Array.h
 		Queue.h
@@ -20,15 +26,11 @@ project (Composition) {
 	}
 
 	Inline_Files {
-		Array.h
+		Base_Array.inl
+		Array.inl
 		Fixed_Array.inl
 		Queue.inl
 		Stack.inl
 	}
-	
-	specific(make){
-		compile_flags += -std=c++11
-	}
-
 }
 
