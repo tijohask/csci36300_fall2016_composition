@@ -1,3 +1,4 @@
+/*
 //
 // size
 //
@@ -17,3 +18,4 @@ size_t Array <T>::max_size (void) const
 {
 	return max_size_;
 }
+*/
