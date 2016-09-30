@@ -26,7 +26,7 @@ int main()
 
 	fixed_array_test();
 
-//	base_array_test();
+	base_array_test();
 
 }
 
