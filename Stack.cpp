@@ -12,7 +12,7 @@
   
   bool is_empty_;
   */
-
+  
 //
 // Stack
 //
@@ -28,17 +28,14 @@ array(50), top_(0), cur_size_(0), max_size_(50), is_empty_(true)
 //
 template <typename T>
 Stack <T>::Stack (const Stack & stack):
-array(), top_(0), cur_size_(stack.size()), max_size_(stack.max_size()), is_empty_(stack.is_empty())
+array(stack.max_size()), top_(0), cur_size_(stack.size()), max_size_(stack.max_size()), is_empty_(stack.is_empty())
 {
 	if(!is_empty_)
-	{
+	{//if the stack is not empty, assign the topmost value
 		top_ = stack.top();
 	}
-	array = Array <T> (stack.max_size());
-//	cur_size_ = stack.size();
-//	max_size_ = stack.max_size();
 	for(int i = 0; i < cur_size_; i++)
-	{
+	{//copy the stack over
 		array[i] = stack.get(i);
 	}
 }
@@ -55,6 +52,16 @@ Stack <T>::~Stack (void)
 //
 // get
 //
+/**
+ * Genuine question: is there a better way to do this?
+ * I put this get method in here to be able to copy the 
+ * Stack from one to another. Array is private, after all,
+ * so there is no direct means of getting to it, but...
+ * I dunno. I feel like I missed something.
+ *
+ * I'm honestly not sure if a get method should be in this 
+ * class.
+ */
 template <typename T>
 T Stack <T>::get (size_t index) const
 {
@@ -68,14 +75,14 @@ template <typename T>
 void Stack <T>::push (T element)
 {
 	if(cur_size_ == max_size_)
-	{
+	{//double the array size if a resize is in order
 		array.resize(max_size_ * 2);
 	}
-	array.set(cur_size_, element);
+	array.set(cur_size_, element);//set the element
 	cur_size_ = cur_size_ + 1;
-	top_ = element;
+	top_ = element;//assign element to top_
 	if(is_empty_)
-	{
+	{//make sure the empty flag is down
 		is_empty_ = false;
 	}
 }
@@ -134,7 +141,6 @@ const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 template <typename T>
 void Stack <T>::clear (void)
 {
-	//basically a new constructor
 	//assign everything to their default values
 	Array<T> array (50);
 	max_size_ = 50;
