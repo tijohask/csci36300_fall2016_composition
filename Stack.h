@@ -1,3 +1,5 @@
+// Ryan: Please include the honor pledge in each file.
+
 #ifndef _STACK_H_
 #define _STACK_H_
 

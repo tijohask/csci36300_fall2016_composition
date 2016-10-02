@@ -1,3 +1,6 @@
+// Ryan: Include the honor pledge in each file.
+
+
 #ifndef _FIXED_ARRAY_H_
 #define _FIXED_ARRAY_H_
 

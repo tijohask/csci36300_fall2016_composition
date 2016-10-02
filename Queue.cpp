@@ -1,3 +1,4 @@
+// Ryan: Please include the honor pledge in each file.
 
 #include <stdexcept>
 
@@ -11,6 +12,9 @@
   
   bool is_empty_;
 */
+
+// Ryan: It is better to set default values than hard code them
+// into your code.
 
 //
 // Queue default
@@ -61,6 +65,8 @@ const Queue <T> & Queue <T>::operator = (const Queue & rhs)
 		}
 	}
 }
+
+// Ryan: Why do you need the get method?
 
 //
 // get

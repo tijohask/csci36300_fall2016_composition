@@ -1,3 +1,4 @@
+// Ryan: Please include the honor pledge in each file.
 #ifndef _ARRAY_H_
 #define _ARRAY_H_
 

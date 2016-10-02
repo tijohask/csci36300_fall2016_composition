@@ -1,3 +1,5 @@
+// Ryan: Include the honor pledge in each file.
+
 #ifndef _BASE_ARRAY_H_
 #define _BASE_ARRAY_H_
 
