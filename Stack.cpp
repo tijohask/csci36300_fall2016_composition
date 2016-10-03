@@ -12,7 +12,10 @@
   
   bool is_empty_;
   */
-  
+ 
+// Ryan: It is better to define a default value than
+// to hardcode values into your code.
+ 
 //
 // Stack
 //
@@ -48,6 +51,8 @@ Stack <T>::~Stack (void)
 {
 
 }
+
+// Ryan: Why is there a get method here?
 
 //
 // get

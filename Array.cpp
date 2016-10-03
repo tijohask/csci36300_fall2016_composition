@@ -1,3 +1,4 @@
+// Ryan: Please include the honor pledge in each file.
 
 #include "Array.h"
 #include <stdexcept>         // for std::out_of_bounds exception
@@ -126,6 +127,7 @@ void Array <T>::resize (size_t new_size)
 
 	else
 	{//nothing needs to be done
+		// Ryan: Perhaps look at breaking this out here.
 		return;
 	}
 }

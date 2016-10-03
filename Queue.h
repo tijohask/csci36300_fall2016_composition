@@ -1,3 +1,5 @@
+// Ryan: Please include the honor pledge in each file.
+
 #ifndef _QUEUE_H_
 #define _QUEUE_H_
 

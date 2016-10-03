@@ -1,3 +1,4 @@
+// Ryan: Please include the honor pledge in each file.
 
 #include "Base_Array.h"
 #include <stdexcept>         // for std::out_of_bounds exception

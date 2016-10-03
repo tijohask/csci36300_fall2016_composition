@@ -1,3 +1,5 @@
+// Ryan: Include the honor pledge in each file.
+
 //
 // size
 //
