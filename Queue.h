@@ -88,8 +88,6 @@ public:
    */
   size_t size (void) const;
   
-  size_t max_size (void) const;
-
   /// Remove all elements from the queue.
   void clear (void);
 
@@ -97,8 +95,6 @@ private:
   Array <T> array;
 
   size_t cur_size_;
-  
-  size_t max_size_;
   
   bool is_empty_;
   // add memer variable here

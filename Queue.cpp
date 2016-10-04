@@ -24,7 +24,7 @@
 
 // Fix: Added default values
 
-#define _MAX_SIZE_ 50
+#define _START_SIZE_ 50
 #define _CUR_SIZE_ 0
 #define _IS_EMPTY_ true
 
@@ -33,7 +33,7 @@
 //
 template <typename T>
 Queue <T>::Queue (void): 
-array(_MAX_SIZE_), cur_size_(_CUR_SIZE_), max_size_(_MAX_SIZE_), is_empty_(_IS_EMPTY_) 
+array(_START_SIZE_), cur_size_(_CUR_SIZE_), is_empty_(_IS_EMPTY_) 
 {
 	
 }
@@ -43,7 +43,7 @@ array(_MAX_SIZE_), cur_size_(_CUR_SIZE_), max_size_(_MAX_SIZE_), is_empty_(_IS_E
 //
 template <typename T>
 Queue <T>::Queue (const Queue & queue): 
-array(queue.max_size()), cur_size_(queue.size()), max_size_(queue.max_size()), is_empty_(queue.is_empty())
+array(queue.array.max_size()), cur_size_(queue.size()), is_empty_(queue.is_empty())
 {
 	for(int i = 0; i < cur_size_; i++)
 	{//iterate through the array, copying the queue
@@ -68,9 +68,8 @@ const Queue <T> & Queue <T>::operator = (const Queue & rhs)
 {
 	if(this != &rhs)//check pointers
 	{
-		array = Array <T> (rhs.max_size());//declare a new array to match the rhs
-		cur_size_ = rhs.size();//assign the sizes
-		max_size_ = rhs.max_size();
+		array = Array <T> (rhs.array.max_size());//declare a new array to match the rhs
+		cur_size_ = rhs.size();//assign the size
 		for(int i = 0; i < cur_size_; i++)
 		{//iterate through, copying the queue
 			array[i] = rhs.array.get(i);
@@ -95,10 +94,9 @@ const Queue <T> & Queue <T>::operator = (const Queue & rhs)
 template <typename T>
 void Queue <T>::enqueue (T element)
 {
-	if(cur_size_ == max_size_)
+	if(cur_size_ == array.max_size())
 	{//resize the array as needed
-		array.resize(max_size_ * 2);
-		max_size_ = max_size_ * 2;
+		array.resize(array.max_size() * 2);
 	}
 	array.set(cur_size_, element);//put the element at the end of the queue
 	cur_size_ = cur_size_ + 1;
@@ -144,12 +142,11 @@ void Queue <T>::clear (void)
 {//reset inside elements to default
  //there shouldn't be a way to get to the old data,
  //so there isn't really a need to delete said data
-	Array<T> array (_MAX_SIZE_);
-	max_size_ = _MAX_SIZE_;
+	Array<T> array (_START_SIZE_);
 	cur_size_ = _CUR_SIZE_;
 	is_empty_ = _IS_EMPTY_;
 }
 
-#undef _MAX_SIZE_
+#undef _START_SIZE_
 #undef _CUR_SIZE_
 #undef _IS_EMPTY_
