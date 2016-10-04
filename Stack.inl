@@ -18,16 +18,6 @@ size_t Stack <T>::size (void) const
 }
 
 //
-// max_size
-//
-template <typename T>
-inline
-size_t Stack <T>::max_size (void) const
-{
-	return max_size_;
-}
-
-//
 // top
 //
 template <typename T>

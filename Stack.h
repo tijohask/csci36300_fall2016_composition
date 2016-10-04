@@ -104,8 +104,6 @@ public:
    */
   size_t size (void) const;
   
-  size_t max_size (void) const;
-
   /// Remove all elements from the stack.
   void clear (void);
 
@@ -115,9 +113,7 @@ private:
   T top_;
 
   size_t cur_size_;
-  
-  size_t max_size_;
-  
+    
   bool is_empty_;
   // add member variable here
 };
