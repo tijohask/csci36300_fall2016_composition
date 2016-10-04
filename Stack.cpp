@@ -24,6 +24,7 @@
 
 #define _MAX_SIZE_ 50
 #define _CUR_SIZE_ 0
+#define _TOP_ (T) NULL
 #define _IS_EMPTY_ true
 
 //
@@ -31,7 +32,7 @@
 //
 template <typename T>
 Stack <T>::Stack (void):
-array(_MAX_SIZE_), top_(0), cur_size_(_CUR_SIZE_), max_size_(_MAX_SIZE_), is_empty_(_IS_EMPTY_) 
+array(_MAX_SIZE_), top_(_TOP_), cur_size_(_CUR_SIZE_), max_size_(_MAX_SIZE_), is_empty_(_IS_EMPTY_) 
 {
 
 }
@@ -41,7 +42,7 @@ array(_MAX_SIZE_), top_(0), cur_size_(_CUR_SIZE_), max_size_(_MAX_SIZE_), is_emp
 //
 template <typename T>
 Stack <T>::Stack (const Stack & stack):
-array(stack.max_size()), top_(0), cur_size_(stack.size()), max_size_(stack.max_size()), is_empty_(stack.is_empty())
+array(stack.max_size()), top_(_TOP_), cur_size_(stack.size()), max_size_(stack.max_size()), is_empty_(stack.is_empty())
 {
 	if(!is_empty_)
 	{//if the stack is not empty, assign the topmost value
@@ -82,6 +83,7 @@ void Stack <T>::push (T element)
 	if(cur_size_ == max_size_)
 	{//double the array size if a resize is in order
 		array.resize(max_size_ * 2);
+		max_size_ = max_size_ * 2;
 	}
 	array.set(cur_size_, element);//set the element
 	cur_size_ = cur_size_ + 1;
@@ -98,12 +100,17 @@ void Stack <T>::push (T element)
 template <typename T>
 void Stack <T>::pop (void)
 {
+	if(is_empty_)
+	{
+		throw Stack <T>::empty_exception();
+	}
+	
 	//T hold = top_;
 	cur_size_ = cur_size_ - 1;//decrement current size
 	if(cur_size_ == 0)
 	{//check if removing the element emptied the array
 		is_empty_ = true;
-		top_ = 0;
+		top_ = _TOP_;
 	}
 	else
 	{//assign a new topmost element
@@ -124,10 +131,8 @@ const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 		//copy over the is_empty_ boolean
 		is_empty_ = rhs.is_empty();
 		
-		if(!is_empty_)
-		{//if the array isn't empty, copy over the top value
-			top_ = rhs.top();
-		}
+		//copy the top value
+		top_ = rhs.top();
 		
 		//assign a new array
 		array = Array <T> (rhs.max_size());
@@ -151,11 +156,12 @@ void Stack <T>::clear (void)
 	//assign everything to their default values
 	Array<T> array (_MAX_SIZE_);
 	max_size_ = _MAX_SIZE_;
-	top_ = 0;
+	top_ = _TOP_;
 	cur_size_ = _CUR_SIZE_;
 	is_empty_ = _IS_EMPTY_;
 }
 
 #undef _MAX_SIZE_
 #undef _CUR_SIZE_
+#undef _TOP_
 #undef _IS_EMPTY_

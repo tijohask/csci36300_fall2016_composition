@@ -98,6 +98,7 @@ void Queue <T>::enqueue (T element)
 	if(cur_size_ == max_size_)
 	{//resize the array as needed
 		array.resize(max_size_ * 2);
+		max_size_ = max_size_ * 2;
 	}
 	array.set(cur_size_, element);//put the element at the end of the queue
 	cur_size_ = cur_size_ + 1;
@@ -113,6 +114,11 @@ void Queue <T>::enqueue (T element)
 template <typename T>
 T Queue <T>::dequeue (void)
 {
+	if(is_empty_)
+	{
+		throw Queue<T>::empty_exception ();
+	}		
+	
 	T hold = array[0];//store the value to be returned
 	
 	for(int i = 0; i < cur_size_ - 1; i++)
