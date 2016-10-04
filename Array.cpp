@@ -1,4 +1,11 @@
+// Honor Pledge:
+//
+// I pledge that I have neither given nor receieved any help
+// on this assignment.
+
 // Ryan: Please include the honor pledge in each file.
+
+// Fix: Included honor pledge
 
 #include "Array.h"
 #include <stdexcept>         // for std::out_of_bounds exception
@@ -128,6 +135,13 @@ void Array <T>::resize (size_t new_size)
 	else
 	{//nothing needs to be done
 		// Ryan: Perhaps look at breaking this out here.
+		// Not sure what's being asked here, or why it is necessary.
+		// The adjustment you appear to be pointing me to has pretty much
+		// the same behavior.
+		
+		// Fix: Not in a loop. Break statement threw error.
 		return;
 	}
+	
+	return;
 }
