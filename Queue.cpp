@@ -1,7 +1,13 @@
+// Honor Pledge:
+//
+// I pledge that I have neither given nor receieved any help
+// on this assignment.
+
 // Ryan: Please include the honor pledge in each file.
 
-#include <stdexcept>
+// Fix: Included honor pledge
 
+#include <stdexcept>
 
 /*  
   Array <T> array;
@@ -16,12 +22,18 @@
 // Ryan: It is better to set default values than hard code them
 // into your code.
 
+// Fix: Added default values
+
+#define _MAX_SIZE_ 50
+#define _CUR_SIZE_ 0
+#define _IS_EMPTY_ true
+
 //
 // Queue default
 //
 template <typename T>
 Queue <T>::Queue (void): 
-array(50), cur_size_(0), max_size_(50), is_empty_(true) 
+array(_MAX_SIZE_), cur_size_(_CUR_SIZE_), max_size_(_MAX_SIZE_), is_empty_(_IS_EMPTY_) 
 {
 	
 }
@@ -35,7 +47,7 @@ array(queue.max_size()), cur_size_(queue.size()), max_size_(queue.max_size()), i
 {
 	for(int i = 0; i < cur_size_; i++)
 	{//iterate through the array, copying the queue
-		array[i] = queue.get(i);
+		array[i] = queue.array.get(i);
 	}
 }
 
@@ -61,28 +73,21 @@ const Queue <T> & Queue <T>::operator = (const Queue & rhs)
 		max_size_ = rhs.max_size();
 		for(int i = 0; i < cur_size_; i++)
 		{//iterate through, copying the queue
-			array[i] = rhs.get(i);
+			array[i] = rhs.array.get(i);
 		}
 	}
 }
 
 // Ryan: Why do you need the get method?
+// I didn't realize that a public method could be called
+// from a private variable. 
+// Fix: Unnecessary code has been removed.
 
 //
 // get
 //
-/**
- * Genuine question: is there a better way to do this?
- * I put this get method in here to be able to copy the 
- * Queue from one to another. Array is private, after all,
- * so there is no direct means of getting to it, but...
- * I dunno. I feel like I missed something.
- */
-template <typename T>
-T Queue <T>::get (size_t index) const
-{
-	return array[index];
-}
+
+/*   :P   */
 
 //
 // enqueue
@@ -133,6 +138,12 @@ void Queue <T>::clear (void)
 {//reset inside elements to default
  //there shouldn't be a way to get to the old data,
  //so there isn't really a need to delete said data
-	cur_size_ = 0;
-	is_empty_ = true;
+	Array<T> array (_MAX_SIZE_);
+	max_size_ = _MAX_SIZE_;
+	cur_size_ = _CUR_SIZE_;
+	is_empty_ = _IS_EMPTY_;
 }
+
+#undef _MAX_SIZE_
+#undef _CUR_SIZE_
+#undef _IS_EMPTY_
