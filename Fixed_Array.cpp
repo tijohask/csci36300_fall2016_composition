@@ -1,5 +1,11 @@
+// Honor Pledge:
+//
+// I pledge that I have neither given nor receieved any help
+// on this assignment.
+
 // Ryan: Include the honor pledge in each file.
 
+// Fix: Included honor pledge
 
 //
 // Fixed_Array
@@ -71,18 +77,3 @@ const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T,
 {
 	//NO
 }
-
-//
-// resize
-//
-/* 
- * Overriding the base method to prevent problems. Now resize
- * will do nothing.
- */
-/*
-Fixed array now inherits from Base Array. Resize is not needed.
-template <typename T, size_t N>
-void Fixed_Array <T, N> :: resize(size_t new_size)
-{
-	//NO
-}*/
