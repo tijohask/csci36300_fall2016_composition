@@ -1,4 +1,11 @@
+// Honor Pledge:
+//
+// I pledge that I have neither given nor receieved any help
+// on this assignment.
+
 // Ryan: Include the honor pledge in each file.
+
+// Fix: Included honor pledge
 
 #ifndef _BASE_ARRAY_H_
 #define _BASE_ARRAY_H_
