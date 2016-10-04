@@ -119,25 +119,27 @@ void Stack <T>::pop (void)
 template <typename T>
 const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 {
-	//copy over the is_empty_ boolean
-	is_empty_ = rhs.is_empty();
-	
-	if(!is_empty_)
-	{//if the array isn't empty, copy over the top value
-		top_ = rhs.top();
+	if(this != &rhs)
+	{
+		//copy over the is_empty_ boolean
+		is_empty_ = rhs.is_empty();
+		
+		if(!is_empty_)
+		{//if the array isn't empty, copy over the top value
+			top_ = rhs.top();
+		}
+		
+		//assign a new array
+		array = Array <T> (rhs.max_size());
+		
+		cur_size_ = rhs.size();//set the sizes to their new values
+		max_size_ = rhs.max_size();
+		
+		for(int i = 0; i < cur_size_; i++)
+		{//copy over the stack elements
+			array[i] = rhs.array.get(i);
+		}
 	}
-	
-	//assign a new array
-	array = Array <T> (rhs.max_size());
-	
-	cur_size_ = rhs.size();//set the sizes to their new values
-	max_size_ = rhs.max_size();
-	
-	for(int i = 0; i < cur_size_; i++)
-	{//copy over the stack elements
-		array[i] = rhs.array.get(i);
-	}
-	
 }
 
 //
