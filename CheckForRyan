@@ -1,0 +1,7 @@
+for f in Array.* Base_Array.* Fixed_Array.* Queue.* Stack.*
+do
+	if grep -q "Ryan:" $f;
+		then
+			gedit $f
+	fi
+done
