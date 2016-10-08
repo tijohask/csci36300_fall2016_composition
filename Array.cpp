@@ -16,7 +16,7 @@
 template <typename T>
 Array <T>::Array (void): Base_Array<T>()
 {
-
+	//use the void constructor
 }
 
 //
@@ -25,7 +25,7 @@ Array <T>::Array (void): Base_Array<T>()
 template <typename T>
 Array <T>::Array (size_t length): Base_Array<T>(length)
 {
-
+	//use the length constructor
 }
 
 //
@@ -34,7 +34,7 @@ Array <T>::Array (size_t length): Base_Array<T>(length)
 template <typename T>
 Array <T>::Array (size_t length, T fill): Base_Array<T>(length, fill)
 {
-
+	//use the fill constructor
 }
 
 //
@@ -43,7 +43,7 @@ Array <T>::Array (size_t length, T fill): Base_Array<T>(length, fill)
 template <typename T>
 Array <T>::Array (const Array & array): Base_Array<T>(array)
 {
-
+	//use the copy constructor
 }
 
 //
@@ -139,9 +139,7 @@ void Array <T>::resize (size_t new_size)
 		// The adjustment you appear to be pointing me to has pretty much
 		// the same behavior.
 		
-		// Fix: Not in a loop. Break statement threw error.
+		// Fix: Break statement threw error: Not in a loop.
 		return;
 	}
-	
-	return;
 }
