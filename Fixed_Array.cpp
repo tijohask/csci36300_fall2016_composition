@@ -32,8 +32,29 @@ template <typename T, size_t N>
 template <size_t M>
 Fixed_Array <T, N>::Fixed_Array (const Fixed_Array <T, M> & arr)
 {
-	//NO
-	//throw 	
+/*
+	if(N > M)
+	{
+		this->cur_size_ = arr.size();//copy over the current size
+		this->max_size_ = N;
+		this->data_ = new T[N];
+		for(int i = 0; i < M; i++)
+		{
+			this->data_[i] = arr.get(i);
+		}//copy the array over
+		
+	}
+	else
+	{
+		this->cur_size_ = N;
+		this->max_size_ = N;
+		this->data_ = new T[N];
+		for(int i = 0; i < N; i++)
+		{
+			this->data_[i] = arr.get(i);
+		}
+	}
+*/
 }
 
 //
@@ -51,7 +72,7 @@ Fixed_Array <T, N>::Fixed_Array (T fill): Base_Array<T>(N, fill)
 template <typename T, size_t N>
 Fixed_Array <T, N>::~Fixed_Array (void)
 {
-	//All the real "Destruction" happens in the Array class...
+	//All the real "Destruction" happens in the Base_Array class...
 	//*sigh*
 }
 
@@ -75,5 +96,32 @@ template <typename T, size_t N>
 template <size_t M>
 const Fixed_Array <T, N> & Fixed_Array <T, N>::operator = (const Fixed_Array <T, M> & rhs)
 {
-	//NO
+/*	
+	if(N > M)
+	{
+		this->cur_size_ = rhs.size();//copy over the current size
+
+		for(int i = 0; i < M; i++)
+		{
+			this->data_[i] = rhs.get(i);
+		}//copy the array over
+		
+	}
+	else// (N <= M)
+	{
+		if(rhs.size() < N)
+		{
+			this->cur_size_ = rhs.size();
+		}
+		else
+		{
+			this->cur_size_ = N;
+		}
+		
+		for(int i = 0; i < this->size(); i++)
+		{
+			this->data_[i] = rhs.get(i);
+		}
+	}
+*/
 }
