@@ -18,16 +18,6 @@ size_t Stack <T>::size (void) const
 }
 
 //
-// top
-//
-template <typename T>
-inline
-T Stack <T>::top (void) const
-{
-	return top_;
-}
-
-//
 // is_empty
 //
 template <typename T>

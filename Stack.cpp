@@ -22,9 +22,16 @@
 
 // Fix: Added default values
 
+// The default starting size for the stack.
 #define _START_SIZE_ 50
+
+// The default current size for the stack
 #define _CUR_SIZE_ 0
+
+// The default Top element for the stack.
 #define _TOP_ (T) NULL
+
+// The default is_empty_ boolean for the stack.
 #define _IS_EMPTY_ true
 
 //
@@ -42,7 +49,8 @@ array(_START_SIZE_), top_(_TOP_), cur_size_(_CUR_SIZE_), is_empty_(_IS_EMPTY_)
 //
 template <typename T>
 Stack <T>::Stack (const Stack & stack):
-array(stack.array.max_size()), top_(_TOP_), cur_size_(stack.size()), is_empty_(stack.is_empty())
+array(stack.array.max_size()), top_(_TOP_), 
+cur_size_(stack.size()), is_empty_(stack.is_empty())
 {
 	if(!is_empty_)
 	{//if the stack is not empty, assign the topmost value
@@ -50,7 +58,7 @@ array(stack.array.max_size()), top_(_TOP_), cur_size_(stack.size()), is_empty_(s
 	}
 	for(int i = 0; i < cur_size_; i++)
 	{//copy the stack over
-		array[i] = stack.array.get(i);
+		array[i] = stack.array[i];
 	}
 }
 
@@ -66,6 +74,7 @@ Stack <T>::~Stack (void)
 // Ryan: Why is there a get method here?
 // I didn't realize that a public method could be called
 // from a private variable. 
+
 // Fix: Unnecessary code has been removed.
 
 //
@@ -73,6 +82,19 @@ Stack <T>::~Stack (void)
 //
 
 /*   :P   */
+
+//
+// top
+//
+template <typename T>
+T Stack <T>::top (void) const
+{
+	if(is_empty_)
+	{//throw the empty exception.
+		throw Stack <T>::empty_exception();
+	}
+	return top_;
+}
 
 //
 // push
@@ -100,7 +122,7 @@ template <typename T>
 void Stack <T>::pop (void)
 {
 	if(is_empty_)
-	{
+	{//throw the empty exception.
 		throw Stack <T>::empty_exception();
 	}
 	//T hold = top_;
