@@ -22,7 +22,7 @@ public:
   /**
    * @class empty_exception
    *
-   * Exception thrown to indicate the stack is empty.
+   * Exception thrown to indicate the queue is empty.
    */
   class empty_exception : public std::exception
   {
@@ -56,8 +56,6 @@ public:
    * @return         Reference to self
    */
   const Queue & operator = (const Queue & rhs);
-
-  T get(size_t index) const;
 
   /**
    * Add a new element to the end of the list

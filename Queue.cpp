@@ -24,8 +24,13 @@
 
 // Fix: Added default values
 
+// The default starting size for the Queue
 #define _START_SIZE_ 50
+
+// The default current size for the Queue
 #define _CUR_SIZE_ 0
+
+// The default is_empty_ boolean value for the Queue
 #define _IS_EMPTY_ true
 
 //
@@ -113,7 +118,7 @@ template <typename T>
 T Queue <T>::dequeue (void)
 {
 	if(is_empty_)
-	{
+	{//throw exception if Queue is empty
 		throw Queue<T>::empty_exception ();
 	}		
 	
@@ -131,7 +136,7 @@ T Queue <T>::dequeue (void)
 		is_empty_ = true;
 	}
 	
-	return hold;
+	return hold;//return the value requested
 }
 
 //
@@ -140,8 +145,6 @@ T Queue <T>::dequeue (void)
 template <typename T>
 void Queue <T>::clear (void)
 {//reset inside elements to default
- //there shouldn't be a way to get to the old data,
- //so there isn't really a need to delete said data
 	Array<T> array (_START_SIZE_);
 	cur_size_ = _CUR_SIZE_;
 	is_empty_ = _IS_EMPTY_;
