@@ -22,6 +22,6 @@ printf "\nCompiling code\n"
 make
 printf "\nRunning...\n"
 valgrind --tool=memcheck --leak-check=full --log-file=Valgrind.txt ./Composition
-printf "Done.\n\n"
+printf "\nDone.\n\n"
 sleep 2
 cat Valgrind.txt
